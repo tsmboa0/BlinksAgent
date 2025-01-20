@@ -24,8 +24,6 @@ export async function POST(req: Request){
 }
 
 const rClient = streamClient.readOnly
-// Store the ID of the last processed tweet
-let lastMentionedId = null;
 
 const fetchMentions = async () => {
     console.log("starting fetch...");
