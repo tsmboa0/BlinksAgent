@@ -1,7 +1,7 @@
 //This serves as an endpoint to store the details of a blinks to our database
 
-import { OpenAIEmbeddings } from "@langchain/openai";
-import { Client, embeddings, vectorStore } from "@/utils/configs";
+// import { OpenAIEmbeddings } from "@langchain/openai";
+import { Client, vectorStore } from "@/utils/configs";
 import { Document } from "@langchain/core/documents";
 
 

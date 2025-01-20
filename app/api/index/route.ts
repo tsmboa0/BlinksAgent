@@ -1,8 +1,8 @@
 //This serves as an entry point to the application. It opens stream connections to X and await responses.
 "use server"
 
-import { xClient, streamClient } from "@/utils/configs";
-import { ETwitterStreamEvent, TTweetv2TweetField } from "twitter-api-v2";
+import { streamClient } from "@/utils/configs";
+// import { ETwitterStreamEvent, TTweetv2TweetField } from "twitter-api-v2";
 // import { callAgent } from "../agent/route";
 
 
@@ -18,9 +18,7 @@ export async function GET(req: Request){
 export async function POST(req: Request){
     console.log("POST received");
 
-    // const payload = await req.json()
-
-    // console.log("The payload is: ",payload);
+    // startPolling()
 
     return new Response("success!", {status: 200});
 }
@@ -48,11 +46,13 @@ const fetchMentions = async () => {
         console.error('Error fetching mentions:', error.code, error.data || error.message);
     }
 
+    fetchMentions();
+
  
 };
 
 // Poll every 30 seconds
-const startPolling = async ()=>{
-    console.log("Starting long polling...");
-    setInterval(fetchMentions, 60000);
-};
+// const startPolling = async ()=>{
+//     console.log("Starting long polling...");
+//     setInterval(fetchMentions, 60000);
+// };

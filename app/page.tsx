@@ -1,15 +1,13 @@
 "use client"
 
-import Image from "next/image";
 import { callAgent } from "./api/agent/route";
-import { useEffect, useState } from "react";
-import { Action, Blink, ActionsRegistry, useAction, Miniblink, useActionsRegistryInterval } from "@dialectlabs/blinks";
+import { useState } from "react";
+import { Blink, useAction } from "@dialectlabs/blinks";
 import {useActionSolanaWalletAdapter} from "@dialectlabs/blinks/hooks/solana";
 import { clusterApiUrl } from "@solana/web3.js";
 
 
 const Home = () => {
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 550
 
   const summon = async(e:any)=>{
     e.preventDefault();
@@ -23,7 +21,7 @@ const Home = () => {
       setIsBuffering(false);
     }else{
       console.log("The status of the result is false");
-      setIsBuffering(false);
+      setIsBuffering(isLoading);
       setResponseText(result.text);
     }
   }
@@ -55,7 +53,7 @@ const Home = () => {
             <button
               type="submit"
               className="send_button"
-              disabled={isBuffering} // Disable button while loading
+              disabled={isBuffering}
             >
               {isBuffering ? (
                 <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
