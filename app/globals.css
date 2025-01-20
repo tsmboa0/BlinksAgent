@@ -62,7 +62,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  width: 70%;
+  width: 80%;
   margin-top: 3rem;
 }
 
@@ -116,7 +116,13 @@ body {
   color: rgba(245, 245, 245, 0.849);
   text-align: center;
 }
-
+.blink_section{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
 @media screen and (max-width: 800px) {
   .home{
     padding-inline: 0rem;
@@ -153,6 +159,9 @@ body {
   }
   .home__nav{
     width: 90%;
+  }
+  .blink_section{
+    width: 100%;
   }
   
 }

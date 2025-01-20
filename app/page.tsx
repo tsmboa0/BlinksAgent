@@ -73,12 +73,14 @@ const Home = () => {
         {responseText ? (
           <div className="response">{responseText}</div>
         ):""}
-        <div style={{width:"90%", marginTop:"3rem"}}>
-          {action ? (
-            <Blink stylePreset="x-dark" adapter={adapter} action={action}/>
-          ): ""
-          }
-        </div>
+        <section className="blink_section">
+          <div style={{width:"90%", marginTop:"3rem"}}>
+            {action ? (
+              <Blink stylePreset="x-dark" adapter={adapter} action={action}/>
+            ): ""
+            }
+          </div>
+        </section>
       </main>
     </div> 
   )

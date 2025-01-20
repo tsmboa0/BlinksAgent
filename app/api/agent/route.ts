@@ -14,7 +14,7 @@ import {blinksList} from "@/utils/liveblinks";
 const model = new ChatGroq({
     model:"llama-3.3-70b-versatile",
     temperature:0,
-    apiKey: "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"
+    apiKey: process.env.GROQ_API_KEY
 });
 
 const example_response = {
