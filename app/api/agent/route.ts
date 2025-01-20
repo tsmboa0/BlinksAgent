@@ -1,3 +1,5 @@
+"use server"
+
 import {ChatGroq} from "@langchain/groq";
 import {ChatPromptTemplate} from "@langchain/core/prompts";
 // import { SystemMessage, AIMessage, HumanMessage, BaseMessage } from "@langchain/core/messages";
@@ -69,17 +71,20 @@ const prompt_context :any = ChatPromptTemplate.fromMessages([
     ]
 ]);
 
-export const callAgent = async(tweet: any)=>{
-    console.log("The agent has been called! The prompt is: ",tweet);
+export async function POST(req: Request){
+
+    const user_promt = await req.json();
+    console.log("The agent has been called! The prompt is: ",user_promt);
 
     try{
         const chain = prompt_context.pipe(model).pipe(new StringOutputParser());
-        const response = await chain.invoke({"example_response":example_response, "blinks_list":blinksList, "user_prompt":tweet})
+        const response = await chain.invoke({"example_response":example_response, "blinks_list":blinksList, "user_prompt":user_promt})
 
         console.log(response);
 
-        return response;
+        return new Response(JSON.stringify(response), {status:200});
     }catch(e){
         console.log(e);
+        return new Response("Internal server error", {status:500});
     }
 }

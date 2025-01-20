@@ -31,5 +31,12 @@ export const blinksList = [
         blinks_url: "https://www.betlify.fun/api/action/play?id=H4c4DvKe6Jj6rG6H5ssQmLjEAcDXsFN1Lf6zxktKns8u",
         blinks_source: "Betlify"
     },
+    {
+        blinks_summary: "",
+        blinks_title: "Register a .sol domain",
+        blinks_desc: "This blink is used to Find and register your perfect domain for Solana",
+        blinks_url: "https://action.sns.id/v1/register",
+        blinks_source: "SNS"
+    },
 
 ];

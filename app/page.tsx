@@ -1,10 +1,9 @@
 "use client"
-
-import { callAgent } from "./api/agent/route";
 import { useState } from "react";
 import { Blink, useAction } from "@dialectlabs/blinks";
 import {useActionSolanaWalletAdapter} from "@dialectlabs/blinks/hooks/solana";
 import { clusterApiUrl } from "@solana/web3.js";
+import { useSearchParams } from "next/navigation";
 
 
 const Home = () => {
@@ -13,16 +12,24 @@ const Home = () => {
     e.preventDefault();
     setIsBuffering(true);
 
-    const res = await callAgent(userPrompt);
-    const result = JSON.parse(res);
-    if (result.status == true){
-      setActionApiUrl(`solana-action:${result.blink_url}`);
-      setResponseText(result.text);
+    const res = await fetch("/api/agent", {
+      method: "POST",
+      headers: {"Content-Type": "aplication/json"},
+      body: JSON.stringify(userPrompt)
+    });
+
+    const result = await res.json();
+    console.log("the result is: ", result);
+    const response = JSON.parse(result);
+
+    if (response.status == true){
+      setActionApiUrl(`solana-action:${response.blink_url}`);
+      setResponseText(response.text);
       setIsBuffering(false);
     }else{
       console.log("The status of the result is false");
       setIsBuffering(isLoading);
-      setResponseText(result.text);
+      setResponseText(response.text);
     }
   }
   const [isBuffering, setIsBuffering] = useState(false);
