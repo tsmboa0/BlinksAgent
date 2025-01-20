@@ -19,3 +19,140 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.home{
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding-inline: 3rem;
+  color: rgba(255, 252, 252, 0.868);
+  /* background-color: black; */
+  background: linear-gradient(to bottom right, black 90%, rgba(180, 29, 180, 0.932)),
+  linear-gradient(to bottom left, black 90%, rgba(180, 29, 180, 0.932));
+}
+
+.home__nav{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  width: 80%;
+}
+.logo_text{
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: rgba(180, 29, 180, 0.932);
+}
+.nav__links{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 40%;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.main{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 70%;
+  margin-top: 3rem;
+}
+
+.hero__text{
+  font-size: 2.7rem;
+  font-weight: bold;
+  width: 90%;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+.hero_h3{
+  width: 70%;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+  color: rgba(245, 245, 245, 0.658);
+}
+.input__section{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  width: 55%;
+  padding-inline: 1rem;
+  border: 1px solid rgba(245, 245, 245, 0.733);
+  border-radius: 20px;
+}
+.text_input{
+  display: block;
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 1.2rem;
+  width: 100%;
+}
+.send_button{
+  width: 60px;
+  height: 45px;
+  border-radius: 20px;
+  background-color: rgba(180, 29, 180, 0.932);
+  font-size: 1rem;
+  display: grid;
+  place-content: center;
+}
+.response{
+  width: 90%;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: rgba(245, 245, 245, 0.849);
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .home{
+    padding-inline: 0rem;
+  }
+  .main{
+    width: 100%;
+    /* margin-top: 4rem; */
+  }
+  .hero__text{
+    font-size: 2.2rem;
+  }
+  .logo_text{
+    font-size: 1.3rem;
+  }
+  
+}
+@media screen and (max-width: 600px) {
+  .home{
+    padding-inline: 0rem;
+  }
+  .main{
+    width: 100%;
+    /* margin-top: 2rem; */
+  }
+  .hero__text{
+    font-size: 1.8rem;
+  }
+  .hero_h3{
+    font-size: 1rem;
+    width: 95%;
+  }
+  .input__section{
+    width: 80%;
+  }
+  .home__nav{
+    width: 90%;
+  }
+  
+}
