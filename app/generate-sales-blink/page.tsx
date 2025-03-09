@@ -37,7 +37,7 @@ const GenerateSalesBlinks = () => {
     <div className="home">
       <main className="main">
         <h1 className="hero__text">Create a Blink to instantly sell your products onchain directly from X for only $2</h1>
-        <h3 className="hero_h3">Sell your products, recieve buyer's shipping details and collect payments directly with your unique blink on X.</h3>
+        <h3 className="hero_h3">{`Sell your products, recieve buyer's shipping details and collect payments directly with your unique blink on X.`}</h3>
         <form onSubmit={register} className="propmt_form" style={{display:"flex", width:"100%", placeContent:"center"}}>
             <div className="form_area">
                 <h4 style={{textAlign:"center", fontSize:"x-large"}}>Complete the form below to generate your unique sales Blink</h4>

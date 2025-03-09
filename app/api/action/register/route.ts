@@ -26,7 +26,7 @@ import {
   
   const destinationWallet = "3CZsEaQpsRVxtMBEgdmhe7CPtNs3oxictAz3PgtEZJRQ";
 
-  let userProgess = new Map();
+  const userProgess = new Map();
   
   const headers = {
     ...ACTIONS_CORS_HEADERS,
