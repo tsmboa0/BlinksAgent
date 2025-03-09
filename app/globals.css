@@ -49,11 +49,13 @@ body {
 }
 .nav__links{
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-between;
-  width: 40%;
+  /* width: 70%; */
   align-items: center;
+  flex-grow: 1;
   font-size: 1.2rem;
+  padding: 0.8rem;
 }
 
 .main{
@@ -123,6 +125,48 @@ body {
   align-items: center;
   width: 70%;
 }
+
+.form_area{
+  display: flex;
+  flex-flow: column wrap;
+  padding: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid whitesmoke;
+  width: 50%;
+  border-radius: 20px;
+}
+.input_area{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+.input_div{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-block: 0.7rem;
+  font-size: medium;
+}
+
+.form_input{
+  width: 100%;
+  border: 0.5px solid rgba(245, 245, 245, 0.68);
+  height: 50px;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size:medium;
+}
+.textarea{
+  height: 100px;
+}
 @media screen and (max-width: 800px) {
   .home{
     padding-inline: 0rem;
@@ -136,6 +180,18 @@ body {
   }
   .logo_text{
     font-size: 1.3rem;
+  }
+  .form_area{
+    width: 80%;
+    border-radius: 20px;
+  }
+  .input_div{
+    width: 100%;
+    margin-block: 0.5rem;
+  }
+  .input_area{
+    width: 100%;
+    margin-top: 1rem;
   }
   
 }
@@ -162,6 +218,18 @@ body {
   }
   .blink_section{
     width: 100%;
+  }
+  .form_area{
+    width: 100%;
+    border-radius: 20px;
+  }
+  .input_div{
+    width: 100%;
+    margin-block: 0.5rem;
+  }
+  .input_area{
+    width: 100%;
+    margin-top: 1rem;
   }
   
 }

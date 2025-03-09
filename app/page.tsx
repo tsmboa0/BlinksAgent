@@ -11,6 +11,7 @@ const Home = () => {
   const summon = async(e:any)=>{
     e.preventDefault();
     setIsBuffering(true);
+    setActionApiUrl("solana-action:https://70dd-105-113-117-61.ngrok-free.app/api/index");
 
     const res = await fetch("/api/agent", {
       method: "POST",
@@ -43,14 +44,7 @@ const Home = () => {
 
 
   return (
-    <div className="home">
-      <nav className="home__nav">
-        <div className="logo_text">Blinks <span style={{color:"whitesmoke"}}>Agent</span></div>
-        <div className="nav__links">
-          <div>About</div>
-          <div> Contact</div>
-        </div>
-      </nav>
+    <div className="home">   
       <main className="main">
         <h1 className="hero__text">Summon a Blink to perform any Solana transaction with a prompt</h1>
         <h3 className="hero_h3">For example: Give me a blink to play Rock Paper Scissors by SendArcade games</h3>

@@ -9,7 +9,12 @@ import {ChatPromptTemplate} from "@langchain/core/prompts";
 import {StringOutputParser} from "@langchain/core/output_parsers";
 
 // const collection = Client.db("BlinksAgent").collection("blinks");
-import {blinksList} from "@/utils/liveblinks";
+// import {blinksList} from "@/utils/liveblinks";
+import { Client } from "@/utils/configs";
+
+const client = await Client.connect();
+const collection = client.db("BlinksAgent").collection("blinks");
+const blinksList = await collection.find({}).toArray();
 
 const model = new ChatGroq({
     model:"llama-3.3-70b-versatile",
