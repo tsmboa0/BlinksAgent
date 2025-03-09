@@ -1,4 +1,5 @@
-"use server"
+// "use server"
+
 import { Client } from "@/utils/configs";
 const client = await Client.connect();
 const collection = client.db("BlinksAgent").collection("blinks");
@@ -12,8 +13,8 @@ export async function Add(data:FormData){
 
     try{
         const res = await collection.insertOne({title, desc, url, source});
-        return {success:true}
         client.close();
+        return {success:true}
     }catch(e){
         console.log("error occured in db",e);
         client.close();
