@@ -65,13 +65,13 @@ import {
               },
               {
                 name: "desc",
-                label: "Enter the blinks description",
+                label: "What is your blink used for?",
                 type: "textarea",
                 required:true
               },
               {
                 name: "url",
-                label: "Enter the live Blink url",
+                label: "Blink url: e.g https://abc.com/api/action/..",
                 type: "url",
                 required:true
               },
