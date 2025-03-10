@@ -138,26 +138,47 @@ import {
     }
   };
   
-  const invokeLLM = async (
-    prompt:string,
-    url:string
-  ) => {
-    const res = await fetch(url, {
-        method:'POST',
-        headers:{"Content-Type": "application/json"},
-        body:JSON.stringify(prompt)
-    });
-
-    const payload = await res.json();
-    console.log("the status is: ",JSON.parse(payload).status);
-    console.log("the agent res is: ",payload);
-
-    if(JSON.parse(payload).status == true){
-      const blink_json = await axios.get(JSON.parse(payload).blink_url);
-      console.log("the blinks json is: ",blink_json.data.title);
-
-      return {payload:JSON.parse(payload), blinkData:blink_json.data};
+  const invokeLLM = async (prompt: string, url: string) => {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(prompt),
+      });
+  
+      const payload = JSON.parse(await res.json());
+      console.log("The status is: ", payload.status);
+      console.log("The agent response is: ", payload);
+  
+      if (payload.status === true) {
+        // Get the blink JSON data
+        const blink_json = await axios.get(payload.blink_url);
+        console.log("The blink JSON title is: ", blink_json.data.title);
+  
+        const defaultOrigin = new URL(payload.blink_url).origin;
+        
+        // Create a deep copy of the data to avoid modifying the original reference
+        let new_blink_data = JSON.parse(JSON.stringify(blink_json.data));
+  
+        // Check and update action hrefs inside the "links.actions" section
+        if (new_blink_data?.links?.actions) {
+          new_blink_data.links.actions = new_blink_data.links.actions.map((action: any) => {
+            if (action.href && !/^https?:\/\//.test(action.href)) {
+              action.href = `${defaultOrigin}${action.href}`;
+            }
+            return action;
+          });
+        }
+  
+        console.log("Updated blinks data: ", new_blink_data.links);
+        
+        return { payload, blinkData: new_blink_data };
+      }
+  
+      return { payload };
+    } catch (error) {
+      console.error("Error in invokeLLM:", error);
+      return { error: "Failed to process request" };
     }
-
-    return {payload:JSON.parse(payload)};
   };
+  
