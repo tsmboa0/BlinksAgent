@@ -1,3 +1,4 @@
+import { solPrice } from "@/utils/getSolPrice";
 import {
     ActionGetResponse,
     ActionPostRequest,
@@ -120,8 +121,7 @@ import {
             userProgess.set(payer.toBase58(), JSON.stringify(data));
 
             //get live price from Binance price feeds
-            const resp = await axios.get("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT");
-            const price = resp.data?.price;
+            const price :number = await solPrice();
 
             const amount_in_sol = Number((1/price).toFixed(2));
             console.log(`price is: ${price}, and amount in SOL: ${amount_in_sol}`);

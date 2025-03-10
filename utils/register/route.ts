@@ -1,5 +1,6 @@
 
 import axios from "axios";
+import { solPrice } from "../getSolPrice";
 import { PublicKey, clusterApiUrl, Transaction, SystemProgram, LAMPORTS_PER_SOL, Connection, sendAndConfirmTransaction } from "@solana/web3.js";
 
 const connection = new Connection(clusterApiUrl("devnet"));
@@ -9,8 +10,7 @@ const to = new PublicKey("3CZsEaQpsRVxtMBEgdmhe7CPtNs3oxictAz3PgtEZJRQ");
 export async function RegisterAPI(title: string, desc:string, url:string, source:string, pubKey:PublicKey, sendTx:any){
 
     try{
-        const response = await axios.get("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT");
-        const price = response.data?.price;  
+        const price : number = await solPrice();
 
         const amount_in_sol = parseFloat((1/price).toFixed(2));
         console.log(`price is: ${price}, and amount in SOL: ${amount_in_sol}`);

@@ -117,6 +117,7 @@ import {
               title: `Not Found!`,
               label: `Not Found`,
               description: `The requested Blink is not found on our database. If you are the developer, kind register your blink on our database. you can use this blink to find the register Blink by passing in the required prompt`,
+
             }
     
             return Response.json(response, { status: 200, headers });
