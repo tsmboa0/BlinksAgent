@@ -1,23 +1,25 @@
-// "use server"
+"use server"
 
 import { Client } from "@/utils/configs";
-const client = await Client.connect();
-const collection = client.db("BlinksAgent").collection("blinks");
+import { NextRequest, NextResponse } from "next/server";
 
 
-export async function Add(data:FormData){
-    const title = data.get("title");
-    const desc = data.get("desc");
-    const url = data.get("url");
-    const source = data.get("source");
+
+export async function POST(req:NextRequest){
+
+    const {title, desc, imageUrl, source} = await req.json();
+    const client = await Client.connect();
+    const collection = client.db("BlinksAgent").collection("blinks");
 
     try{
-        const res = await collection.insertOne({title, desc, url, source});
+        const res = await collection.insertOne({title, desc, imageUrl, source});
         client.close();
-        return {success:true}
+        console.log("saved!!")
+        return new NextResponse(JSON.stringify({success:true}))
     }catch(e){
         console.log("error occured in db",e);
         client.close();
-        return {success:true}
+        console.log("db err");
+        return new NextResponse(JSON.stringify({success:false}))
     }
 }

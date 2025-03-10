@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
 import axios from "axios";
-import { RegisterAPI } from "../api/register/route";
+import { RegisterAPI } from "../../utils/register/route";
 
 
 const Register = () => {
@@ -14,8 +14,8 @@ const Register = () => {
     if(!publicKey){alert("Connect your wallet first"); return};
     setIsBuffering(true);
 
-    const res :any = await RegisterAPI(blinksTitle, blinksDesc, blinksUrl, blinksSource, publicKey, sendTransaction); 
-    console.log(res);
+    const res = await RegisterAPI(blinksTitle, blinksDesc, blinksUrl, blinksSource, publicKey, sendTransaction); 
+    console.log("res isssss ",res);
     if(res.success == true){
       console.log(true);
       setIsBuffering(false);

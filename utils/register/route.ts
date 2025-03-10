@@ -1,4 +1,4 @@
-import { Add } from "../db/route";
+
 import axios from "axios";
 import { PublicKey, clusterApiUrl, Transaction, SystemProgram, LAMPORTS_PER_SOL, Connection, sendAndConfirmTransaction } from "@solana/web3.js";
 
@@ -34,22 +34,26 @@ export async function RegisterAPI(title: string, desc:string, url:string, source
         await connection.confirmTransaction(res, "confirmed");
         console.log("confirmed");
 
-        const data = new FormData();
-        data.append("title", title);
-        data.append("desc", desc);
-        data.append("url", url);
-        data.append("source", source);
-
-        const register = await Add(data);
-
-        if(register.success == true){
-            return JSON.stringify({success:true});
-        }else{
-            return JSON.stringify({success:false});
-        }       
+        const data = {
+            title:title,
+            desc:desc,
+            imageUrl:url,
+            source:source
         }
+
+        const register = await fetch('/api/db', {
+            method: "POST",
+            headers:{"Content-Type": "application/json"},
+            body:JSON.stringify(data)
+        });
+
+        // const resp = await register.json();
+        console.log("res from db ");
+
+        return {success:true};      
+    }
     catch(e){
-        console.log(e);
-        return JSON.stringify({success:false});
+        console.log("the api call in the utils failed");
+        return {success:false};
     }
 }

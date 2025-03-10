@@ -16,7 +16,6 @@ import {
     VersionedTransaction,
     clusterApiUrl,
   } from "@solana/web3.js";
-  import { Add } from "../../db/route";
   import axios from "axios";
   // import LOGO from "@/public/"
   
@@ -122,7 +121,7 @@ import {
 
             //get live price from Binance price feeds
             const resp = await axios.get("https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT");
-            const price = resp.data?.price;  
+            const price = resp.data?.price;
 
             const amount_in_sol = Number((1/price).toFixed(2));
             console.log(`price is: ${price}, and amount in SOL: ${amount_in_sol}`);
@@ -154,13 +153,13 @@ import {
             console.log("payer is now", id);
 
             const data = JSON.parse(userProgess.get(id));
-            const formData = new FormData;
-            formData.append("title", data.title)
-            formData.append("desc", data.desc)
-            formData.append("url", data.imageUrl)
-            formData.append("source", data.source)
 
-            await Add(formData);
+            await fetch(url.origin+"/api/db", {
+              method: "POST",
+              headers:{"Content-Type": "application/json"},
+              body:JSON.stringify(data)
+            });
+
             console.log("added to db");
 
             userProgess.delete(payer);
