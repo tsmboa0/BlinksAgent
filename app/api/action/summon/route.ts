@@ -1,4 +1,4 @@
-
+/* eslint-disable prefer-const */
 
 import {
   Action,
@@ -158,7 +158,7 @@ import {
         const defaultOrigin = new URL(payload.blink_url).origin;
         
         // Create a deep copy of the data to avoid modifying the original reference
-        let new_blink_data = JSON.parse(JSON.stringify(blink_json.data));
+        let new_blink_data = blink_json.data;
   
         // Check and update action hrefs inside the "links.actions" section
         if (new_blink_data?.links?.actions) {
