@@ -3,7 +3,7 @@ import axios from "axios";
 import { solPrice } from "../getSolPrice";
 import { PublicKey, clusterApiUrl, Transaction, SystemProgram, LAMPORTS_PER_SOL, Connection, sendAndConfirmTransaction } from "@solana/web3.js";
 
-const connection = new Connection(clusterApiUrl("devnet"));
+const connection = new Connection(clusterApiUrl("mainnet-beta"));
 const to = new PublicKey("3CZsEaQpsRVxtMBEgdmhe7CPtNs3oxictAz3PgtEZJRQ");
 
 

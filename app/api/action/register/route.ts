@@ -20,7 +20,7 @@ import {
   import axios from "axios";
   // import LOGO from "@/public/"
   
-  const blockchain = BLOCKCHAIN_IDS.devnet;
+  const blockchain = BLOCKCHAIN_IDS.mainnet;
   
   const connection = new Connection(clusterApiUrl("devnet"));
   
