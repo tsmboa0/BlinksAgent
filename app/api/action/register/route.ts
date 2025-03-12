@@ -22,7 +22,7 @@ import {
   
   const blockchain = BLOCKCHAIN_IDS.mainnet;
   
-  const connection = new Connection(clusterApiUrl("devnet"));
+  const connection = new Connection(clusterApiUrl("mainnet-beta"));
   
   const destinationWallet = "3CZsEaQpsRVxtMBEgdmhe7CPtNs3oxictAz3PgtEZJRQ";
 
